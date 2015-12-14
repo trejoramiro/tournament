@@ -8,19 +8,19 @@
 
 -- To run tournament.sql in terminal, use the command >>\i tournament.sql
 
-
-CREATEDB tournament;
+DROP DATABASE IF EXISTS tournament;
+CREATE DATABASE tournament;
 \c tournament
 
 DROP TABLE IF EXISTS player, matches;
 
 CREATE TABLE player (
-    id serial primary key,
-    name text,
+    id SERIAL PRIMARY KEY,
+    name TEXT NOT NULL
   );
 
 CREATE TABLE matches (
-    id serial primary key,
-    winner integer references player(id),
-    loser integer references player(id)
+    id SERIAL PRIMARY KEY,
+    winner INTEGER REFERENCES player(id) ON DELETE CASCADE,
+    loser INTEGER REFERENCES player(id) ON DELETE CASCADE
   );
