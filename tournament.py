@@ -14,7 +14,7 @@ def connect(database_name="tournament"):
         cursor = db.cursor()
         return db, cursor
     except:
-        print("<connection failed. error found.>")
+        print("<error message>")
 
 
 

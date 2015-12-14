@@ -21,6 +21,6 @@ CREATE TABLE player (
 
 CREATE TABLE matches (
     id SERIAL PRIMARY KEY,
-    winner INTEGER REFERENCES player(id) ON DELETE CASCADE,
-    loser INTEGER REFERENCES player(id) ON DELETE CASCADE
+    winner INTEGER REFERENCES player(id) ON DELETE CASCADE CHECK (winner != loser),
+    loser INTEGER REFERENCES player(id) ON DELETE CASCADE CHECK (loser != winner)
   );
